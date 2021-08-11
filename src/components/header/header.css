@@ -1,0 +1,45 @@
+.level-box{
+    color: #ffffff !important;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.input-search{
+    background-color: transparent;
+    border-right: none !important;
+    border: 1px solid white;
+}
+.search{
+    background-color: transparent;
+    border: 1px solid white !important;
+    border-left: none !important;
+}
+.logBrand{
+    width: 81px;
+}
+.level-icon{
+    font-size: 15px;
+    margin-right: 5px;
+}
+.fond{
+    background-image: url("../../images/font.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 108vh;
+    margin-top: -15px;
+    background-position-x:1rem;
+}
+.title-one{
+    font-size: 53px;
+    padding-top: 45px;
+    font-family: Parisienne, Sans-serif;
+}
+.title-two{
+    font-size: 45px;
+    font-family: Parisienne, Sans-serif;
+}
+
+
+.list li {
+    list-style-type:disclosure-open;
+}
