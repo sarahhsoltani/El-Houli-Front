@@ -1,0 +1,34 @@
+.fond{
+    background-image: url("../../images/font.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 108vh;
+    margin-top: -15px;
+    background-position-x: -7rem;
+}
+.title-one{
+    font-size: 53px;
+    padding-top: 45px;
+    font-family: Parisienne, Sans-serif;
+}
+.title-two{
+    font-size: 45px;
+    font-family: Parisienne, Sans-serif;
+}
+
+
+.list li {
+    list-style-type:disclosure-open;
+}
+.box p{
+    font-family: "Noto Serif",serif;
+    font-size: 14px;
+    line-height: 25px;
+    color: #8f8f8f;
+    font-weight: 400;
+}
+.box-item{
+    background-image: url("../../images/shop.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

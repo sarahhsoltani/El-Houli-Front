@@ -2980,7 +2980,11 @@ textarea.form-control-lg {
   background-color: #d4dad8;
   border-color: #d4dad8;
 }
-
+.btn-explore{
+  color: #fff;
+  background-color: black;
+  border-color: black;
+}
 
 .btn-primary:hover {
   color: #fff;

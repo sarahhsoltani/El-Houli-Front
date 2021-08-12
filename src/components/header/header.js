@@ -60,39 +60,7 @@ function Header() {
            </div>
         </Nav>
        
-         <menu>
-               {/*********** End Section 2 Navbar  ********/}
-                <div className="col-md-12 text-left">
-                  
-                      <div className="fond text-left">
-                         <h1 className="title-one">Des bijous pour tous les couts</h1>
-                         <h1 className="title-two">fascinaux,originals</h1>
-                         <ul className="pt-3 list">
-                            <li><p>Artisanat 100% tunisien</p></li>
-                            <li><p>Envoi dans les 24h</p></li>
-                            <li><p>Produits de trés haute qualité</p></li>
-                            <li><p>Suivi rapproché de nos clients</p></li>
-                         </ul>
-                         <button className="btn btn-houli mt-3">Profiter & découvrir</button>
-                      </div>
-                    
-                      
-                 
-                </div>
-               {/*********** Start Section 3 menu  ********/}
-               {/***********Start Section 4  **************************/}
-               <div className="container ">
-                  <div className="col-md-12 text-center mt-4">
-                      <div >
-                         <h3>Solde de 20% sur tous les produits </h3>
-                         <h3> Nouvelle collection tendance</h3>
-                         <p>Nous pensons qu'un bon design est toujours de saison</p>
-                         <button className="btn btn-achat">ACHETER MAINTENANT</button>
-                      </div>
-                  </div>
-               </div>
-                {/*********** End  Section 4  **************************/}
-         </menu>
+        
       </div>
     )
 }
