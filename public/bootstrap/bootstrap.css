@@ -2980,12 +2980,16 @@ textarea.form-control-lg {
   background-color: #d4dad8;
   border-color: #d4dad8;
 }
-.btn-explore{
+.btn-explore{ 
   color: #fff;
   background-color: black;
   border-color: black;
 }
-
+.btn-descover{
+  color: black;
+  background-color: #ebe2dd;
+  border-color: #ebe2dd;
+}
 .btn-primary:hover {
   color: #fff;
   background-color: #0b5ed7;
@@ -4410,6 +4414,7 @@ textarea.form-control-lg {
 .navbar-light .navbar-nav .show > .nav-link,
 .navbar-light .navbar-nav .nav-link.active {
   color: rgba(0, 0, 0, 0.9);
+  font-weight: 400;
 }
 .navbar-light .navbar-toggler {
   color: rgba(0, 0, 0, 0.55);
@@ -7354,7 +7359,9 @@ textarea.form-control-lg {
 .ms-3 {
   margin-left: 1rem !important;
 }
-
+.ms-6 {
+  margin-left: 12rem !important;
+}
 .ms-4 {
   margin-left: 1.5rem !important;
 }
