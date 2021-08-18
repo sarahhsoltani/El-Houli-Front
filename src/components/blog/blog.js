@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Header from '../header/header'
 import "./blog.css"
 import {Form} from "react-bootstrap" 
 const Blog = () => {
-    const [blog,setblog]=useState([])
+   
    
 
   return(
