@@ -25,35 +25,36 @@ function Header() {
         </div>
          {/*********** End Section 1  ********/}
          {/*********** Start Section 2 Navbar  ********/}
-         <Nav className="navbar navbar-expand-lg navbar-light bg-nav">
+         <Nav className="navbar navbar-expand-lg navbar-light ">
            <div className="container-fluid">
-              <a className="navbar-brand" href="nn"><img className="logBrand" src="/image/logBrand.png" alt="logo"/></a>
+              <Link to="/" className="navbar-brand">
+                  <img className="logBrand" src="/image/logBrand.png" alt="logo"/></Link>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
              <span className="navbar-toggler-icon"></span>
             </button>
-              <Form inline className="d-flex ms-5  me-6">
+              <Form inline className="d-flex ms-5  formm">
                 <FormControl  className="input-search" type="text" placeholder="Type movie or tv show name to find it"  />
                 <button className="btnn search btn-red"> <i className="fas fa-search"></i></button>
               </Form>
            <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav  mb-2 mb-lg-0">
                   <li className="nav-item ">
-                     <Link to="/" className="nav-link active" aria-current="page" href="nnn">Boutique</Link>
+                     <Link to="/" className="nav-link active" aria-current="page" >Boutique</Link>
                   </li>
                   <li className="nav-item ms-4">  
-                      <Link to="/propos" className="nav-link" href="nnn">À propos</Link>
+                      <Link to="/propos" className="nav-link" >À propos</Link>
                   </li>
                   <li className="nav-item ms-4">
-                      <Link to="/collection" className="nav-link" aria-current="page" href="nnn">Collections</Link>
+                      <Link to="/collection" className="nav-link" aria-current="page" >Collections</Link>
                   </li>
                   <li className="nav-item ms-4">
-                      <Link to="/blog"  className="nav-link " aria-current="page" href="nnn">Blog</Link>
+                      <Link to="/blog"  className="nav-link " aria-current="page" >Blog</Link>
                   </li>
                   <li className="nav-item ms-4"> 
-                      <a className="nav-link " aria-current="page" href="nnn">Cart  <i className="fas fa-shopping-basket"></i></a>
+                      <a className="nav-link " aria-current="page" >Cart  <i className="fas fa-shopping-basket"></i></a>
                   </li>
                   <li className="nav-item ms-4">
-                      <a className="nav-link " aria-current="page" href="nnn">Contact</a>
+                      <a className="nav-link " aria-current="page" >Contact</a>
                   </li>
               </ul>
            

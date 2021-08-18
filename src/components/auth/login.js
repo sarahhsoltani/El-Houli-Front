@@ -1,5 +1,6 @@
 import React ,{useState} from 'react'
 import { Button ,Form } from 'react-bootstrap'
+import {FormFeedback} from "reactstrap"
 import { useDispatch, useSelector } from 'react-redux'
 import Header from '../header/header'
 import { Link,Redirect } from 'react-router-dom'
@@ -44,7 +45,7 @@ const Login = () => {
        <>
 
         <Header/>
-         <div className="container">
+         {/* <div className="container">
              <AlertMsg/>
              <h1>Connectez-Vous À Votre Compte</h1>
              <h3>Profitez d'offres exceptionnelles en rejoignant la famille d'El Houli</h3>
@@ -57,9 +58,11 @@ const Login = () => {
                      />
                 
                  </Form.Group>
+                 <FormFeedback iinvalid="true">Entrer email valide.</FormFeedback>
+
                  <Form.Group className="mb-3 d-flex" controlId="formBasicEmail ">
                    <Form.Label>Password </Form.Label>
-                   <Form.Control type="text" name="nom" value={password} placeholder="Enter nom"
+                   <Form.Control type="password" name="nom" value={password} placeholder="Enter nom"
                    onChange={(e) => setPassword(e.target.value)} 
                  
                      />
@@ -76,7 +79,54 @@ conserver plusieurs adresses, suivre les commandes et plus encore.</p>
             </Link>
           </p>
                  </Form>
-         </div>
+         </div> */}
+         <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth px-0">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+              <div class="brand-logo">
+                <img src="/image/logBrand.png" alt="logo"/>
+              </div>
+              <h4>Connectez-Vous À Votre Compte</h4>
+              {/* <h6 class="font-weight-light">Profitez d'offres exceptionnelles en rejoignant la famille d'El Houli</h6> */}
+              <form class="pt-3" onSubmit={loginForm} >
+                <div class="form-group">
+                  <input type="email" name="nom" value={email} placeholder="Enter nom" 
+                   onChange={(e) => setEmail(e.target.value)}
+                  class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username"/>
+                </div>
+                <div class="form-group">
+                  <input  type="password" name="nom" value={password} placeholder="Enter nom"
+                   onChange={(e) => setPassword(e.target.value)}
+                  className="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password"/>
+                </div>
+                <div class="mt-3">
+                  <button type='submit' class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" >Login</button>
+                </div>
+                <div class="my-2 d-flex justify-content-between align-items-center">
+                  <div class="form-check">
+                    <label class="form-check-label text-muted">
+                      <input type="checkbox" class="form-check-input"/>
+                      Keep me signed in
+                    </label>
+                  </div>
+                
+                </div>
+              
+                <div class="text-center mt-4 font-weight-light">
+                Vous n'avez pas un compte?  <Link to="/register" className="inscription"> S'inscrire</Link>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  
+  </div>
          </>}
          <Footer/>
     </div>

@@ -4401,7 +4401,7 @@ textarea.form-control-lg {
   color: rgba(0, 0, 0, 0.9);
 }
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0);
+  color: rgba(0, 0, 0) !important;
   font-weight: 300;
     text-transform: uppercase;
 }
