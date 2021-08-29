@@ -9,6 +9,7 @@ import Login from './components/auth/login';
 import Dashboard from './components/Dashboard/homeAdmin/dashboard';
 import UsersAd from './components/Dashboard/usersAd/usersAd';
 import ProductAd from "./components/Dashboard/prodcut/produitAd"
+import MyPublication from './components/myPublication/myPublication';
 function App() {
   return (
     <BrowserRouter className="App">
@@ -18,11 +19,11 @@ function App() {
          <Route path="/collection" exact><Collection/></Route>
          <Route path="/blog" exact><Blog/></Route>
          <Route path="/register" exact><Register/></Route>
-         <Route path="/login"><Login/></Route>
-         <Route path="/dashboard/home"><Dashboard/></Route>
+         <Route path="/login" exact><Login/></Route>
+         <Route path="/dashboard/home" exact><Dashboard/></Route>
          <Route path="/dashboard/users" exact> <UsersAd/></Route>
          <Route path="/dashboard/products" exact> <ProductAd/></Route>
-        
+        <Route path="/MyPublication" exact><MyPublication/></Route>
       </Switch>
     </BrowserRouter>
   );

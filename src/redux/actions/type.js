@@ -12,3 +12,12 @@ export const LOGOUT = "LOGOUT";
 //----------------------------------------------
 export const GET_USERS = "GET_USERS";
 export const DELETE_USER = "DELETE_USER";
+//----------------ACTION uSER----------------------
+export const USER_LOADED = "USER_LOADED";
+export const AUTHENTIFICATION_ERROR = "AUTHENTIFICATION_ERROR";
+//----------------ACTION PRODUCTS----------------------
+export const GET_PRODUCTS = "GET_PRODUCTS";
+export const GET_PRODUCT = "GET_PRODUCT";
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";

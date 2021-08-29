@@ -1,6 +1,12 @@
 import React from 'react'
 import {Link} from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
+import {logoutUser } from '../../../redux/actions/authentification'
 function NavbarAdmin() {
+  const dispatch = useDispatch()
+  const logout =()=>{
+    dispatch (logoutUser())
+}
     return (
         <div>
             <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -8,7 +14,7 @@ function NavbarAdmin() {
         <Link to="/dashboard/home" className="navbar-brand brand-logo mr-5" >
             <img src="/image/logBrand.png" className="mr-2" alt="logo"/></Link>
         <a className="navbar-brand brand-logo-mini" >
-            <img src="/image/logBrand.png"  alt="logo"/></a>
+            <img src="/image/newLog.png"  alt="logo"/></a>
       </div>
       <div className="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button className="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -68,10 +74,12 @@ function NavbarAdmin() {
                 <i className="ti-settings text-primary"></i>
                 Settings
               </a>
-              <a className="dropdown-item">
+              <a className="dropdown-item" onClick={logout}>
                 <i className="ti-power-off text-primary"></i>
+                
                 Logout
               </a>
+              
             </div>
           </li>
         

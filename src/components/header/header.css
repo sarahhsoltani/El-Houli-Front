@@ -9,13 +9,19 @@
     border-right: none !important;
     border: 1px solid white;
 }
+.nav-linkk{
+    color: black !important;
+}
 .search{
     background-color: transparent;
     border: 1px solid white !important;
     border-left: none !important;
 }
 .logBrand{
-    width: 81px;
+    width: 41px;
+}
+.nav-link{
+    font-size: 14px;
 }
 .level-icon{
     font-size: 15px;
@@ -31,5 +37,8 @@
     margin-right: 5px; 
 }
 .formm{
-    width: 28rem;
+    width: 20rem;
+}
+.btn-dec{
+    padding: 8px !important;
 }

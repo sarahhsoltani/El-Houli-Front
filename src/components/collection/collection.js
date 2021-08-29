@@ -1,10 +1,18 @@
-import React from 'react'
+import React ,{useEffect}from 'react'
 import Header from '../header/header'
 import "./collection.css"
+import { getPubs } from '../../redux/actions/produit'
 import {Form} from "react-bootstrap" 
+import {Card,Button} from "react-bootstrap"
 import Footer from '../footer/footer'
-
+import { useDispatch, useSelector } from 'react-redux'
 const Collection = () => {
+  const dispatch = useDispatch()
+  const pubs = useSelector((state) => state.productReducer.pubs)
+  useEffect(() => {
+    dispatch(getPubs())
+       }, [dispatch])
+    console.log("pubs",pubs)
   return(
     <div>
         <Header/> 
@@ -44,6 +52,27 @@ const Collection = () => {
             <Form.Control className="mt-5 input-search" type="email" placeholder="Enter email"  />
             <i class="fal fa-search mt-5 fa-2x searchh" ></i>
             </div>
+            {/*---------- cards  ---------*/}
+          <div className="container">
+          <div className=" d-flex justify-content-around flex-wrap mt-5">
+           {
+                              pubs.map((el,key)=>(
+                                <Card style={{ width: '18rem' }} key={key}>
+                                <Card.Img variant="top"  className="w-50 h-50"  src={el.image} />
+                                <Card.Body>
+                                  <Card.Title>{el.title}</Card.Title>
+                                  <Card.Text>
+                                    <p>{el.price}</p>
+                                    <p>{el.description}</p>
+                                    <p>{el.category}</p>
+                                  </Card.Text>
+                                  <Button variant="primary">Consulter</Button>
+                                </Card.Body>
+                              </Card>
+                              ))
+                          }
+           </div>
+          </div>
             <Footer/>
         </div>
     </div>

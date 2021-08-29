@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
-import "./auth.css"
 import Header from "../header/header"
-import {Form,Button} from "react-bootstrap"
-import {FormFeedback} from "reactstrap"
+import {FormGroup} from "react-bootstrap"
+import {FormFeedback,Input} from "reactstrap"
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import {register} from "../../redux/actions/authentification"
@@ -17,7 +16,7 @@ const Register = () => {
     const [validate, setValidate] = useState(
     {nomState:"ok", emailState: "ok",passwordState: "ok",telState: "ok"})
     const dispatch = useDispatch()
-
+    const user = useSelector((state) => state.authReducer.user) 
   const isAuthenticated = useSelector((state) => state.authReducer.isAuthenticated)
   console.log("authh",isAuthenticated)
  
@@ -74,14 +73,21 @@ const validateEmail = () => {
         dispatch (register(nom,email,password,role,phone))
     
     :  dispatch (register(nom,email,password,role))
-    console.log("vaidateeee",validate.emailState)
+    console.log("email",email)
+  }
+  if (user) {
+    if (isAuthenticated && user.role === "Client" || user.role === "Vendeur") return <Redirect to="/" />;
+  }
+  if (user) {
+    if (isAuthenticated && user.role === "Admin") return <Redirect to="/dashboard/home" />;
   }
   return(
 
     <div>
-        <Header/>
+
+   <Header/>
        
-         {isAuthenticated  ? <Redirect to="/" />:
+     {/* {isAuthenticated  ? <Redirect to="/" />:
         
         <div className="col-md-12 container mt-5 text-center ">
         
@@ -167,7 +173,129 @@ const validateEmail = () => {
                  </Button>
                </Form>
                <AlertMsg/>
-        </div>}
+        </div>} */}
+
+        {/* -------------------------- Register------------- */}
+       { isAuthenticated  ? <Redirect to="/" /> :  
+  <div className="container-scroller">
+    <div className="container-fluid page-body-wrapper full-page-wrapper">
+      <div className="content-wrapper d-flex align-items-center auth px-0">
+        <div className="row w-100 mx-0">
+          <div className="col-lg-4 mx-auto">
+            <div className="auth-form-light text-left py-3 px-4 px-sm-5 text-center">
+              <div className="brand-logo">
+              <img src="/image/logBrand.png" className="logoAd" alt="logo"/>
+              </div>
+              <h4 className="cmp">Créez Votre Compte</h4>
+              <h6 className="font-weight-light offre">Profitez d'offres exceptionnelles en rejoignant la famille d'El Houli</h6>
+              <div> <AlertMsg/></div>
+              <form className="pt-3" onSubmit={submitForm}>
+                <div className="form-group">
+                  <input type="text" className="form-control form-control-lg"  placeholder="enter votre nom..."
+                  name="nom" value={nom}  
+                  onChange={(e) => setName(e.target.value) }
+                  
+                  invalid={validate.nomState === 'bad'}
+                  onFocus={() => {
+                   setValidate({
+                     validate: { ...validate, nameState: "ok" }
+                   });
+                 }}
+                  />
+                </div>
+                <div className="form-group">
+                  <input type="email" className="form-control form-control-lg" id="exampleInputEmail1" placeholder="entere votre Email.."
+                  name="email" value={email}   placeholder="Enter email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  invalid={validate.emailState === 'bad'}
+                  onFocus={() => {
+                    setValidate({
+                      validate: { ...validate, emailState: "ok" }
+
+                    });
+                  }}
+                  />
+                </div>
+               
+                <div className="form-group">
+                  <input type="password" className="form-control form-control-lg" id="exampleInputPassword1" placeholder="entrer votre mot de passe.."
+                  name="password" value={password}   placeholder="Password" 
+                  onChange={(e) => setPassword(e.target.value)}
+                  invalid={validate.passwordState === 'bad'}
+                  onFocus={() => {
+                    setValidate({
+                      validate: { ...validate, passwordState: "ok" }
+                    });
+                  }}
+                  />
+                </div>
+                <div className="form-group">
+                  {/* < input type="select" className="form-control form-control-lg" id="exampleInputEmail2" placeholder="vous étes ?"
+                  name="role" value={role}  placeholder="Enter role"
+                  onChange={(e) => setRole(e.target.value)} /> */}
+                    
+                   
+                
+                </div>
+                <FormGroup >
+             
+             <Input
+               className="  form-control-lg"
+               type="select"
+               name="role"
+               onChange={(e) => setRole(e.target.value)} 
+               onClick={() => {
+                role === "Client" &&
+                 setValidate({
+                     validate: { ...validate, telState: "ok" }
+                   });
+               }}
+             >
+               <option value="Vendeur">Vendeur</option>
+               <option value="Client"> Client</option>
+             </Input>
+           </FormGroup>
+                { role === "Vendeur" && (
+              <div>
+                <FormGroup >
+                  
+                  <Input
+                    className="  form-control-lg"
+                   
+                    name="phone"
+                    placeholder="Votre Numéro de téléphone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)} 
+                    invalid={validate.telState === "bad"}
+                    onFocus={() => {
+                      setValidate({
+                        validate: { ...validate, telState: "ok" }
+                      });
+                    }}
+                  />
+                  <FormFeedback iinvalid="true">
+                    S'il vous plait entrez un numéro de téléphone avec chiffres.
+                  </FormFeedback>
+                </FormGroup>
+              </div>
+            )}
+              
+                <div className="mt-3">
+                  <button type="submit" className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" >SIGN UP</button>
+                </div>
+                <div className="text-center mt-4 font-weight-light">
+                  vous avez déja un compte? <Link to="/login"  className="text-primary">Se connecter</Link>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+  </div>
+                }
     </div>
    )
 

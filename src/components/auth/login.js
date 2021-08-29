@@ -1,6 +1,4 @@
 import React ,{useState} from 'react'
-import { Button ,Form } from 'react-bootstrap'
-import {FormFeedback} from "reactstrap"
 import { useDispatch, useSelector } from 'react-redux'
 import Header from '../header/header'
 import { Link,Redirect } from 'react-router-dom'
@@ -14,6 +12,12 @@ const Login = () => {
     const dispatch = useDispatch()
     const isAuthenticated = useSelector((state) => state.authReducer.isAuthenticated) 
     
+    const user = useSelector((state) => state.authReducer.user) 
+
+    const loading = useSelector((state) => state.authReducer.loading) 
+
+    console.log("userr",user)
+
     const loginForm=(e)=>{ 
         e.preventDefault()
         validateEmail()
@@ -38,10 +42,18 @@ const Login = () => {
           validate.passwordState = "ok";
         }
         setValidate({ validate });
-      };
-  return(
-    <div>
-         {isAuthenticated  ? <Redirect to="/" />:
+      }; 
+   
+           
+            if (user) {
+              if (isAuthenticated && user.role === "Client" || user.role === "Vendeur") return <Redirect to="/" />;
+            }
+            if (user) {
+              if (isAuthenticated && user.role === "Admin") return <Redirect to="/dashboard/home" />;
+            }
+        return( 
+          <div>
+     
        <>
 
         <Header/>
@@ -80,43 +92,36 @@ conserver plusieurs adresses, suivre les commandes et plus encore.</p>
           </p>
                  </Form>
          </div> */}
-         <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth px-0">
-        <div class="row w-100 mx-0">
-          <div class="col-lg-4 mx-auto">
-            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="brand-logo">
-                <img src="/image/logBrand.png" alt="logo"/>
+         <div className="container-scroller">
+    <div className="container-fluid page-body-wrapper full-page-wrapper">
+      <div className="content-wrapper d-flex align-items-center auth px-0">
+        <div className="row w-100 mx-0">
+          <div className="col-lg-4 mx-auto">
+            <div className="auth-form-light text-left py-5 px-4 px-sm-5 text-center">
+              <div className="brand-logo">
+                <img src="/image/newLog.png"  className="logoAd" alt="logo"/>
               </div>
-              <h4>Connectez-Vous À Votre Compte</h4>
-              {/* <h6 class="font-weight-light">Profitez d'offres exceptionnelles en rejoignant la famille d'El Houli</h6> */}
-              <form class="pt-3" onSubmit={loginForm} >
-                <div class="form-group">
+              <h4 className="cpt">Connectez-Vous À Votre Compte</h4>
+              <AlertMsg/>
+              {/* <h6 className="font-weight-light">Profitez d'offres exceptionnelles en rejoignant la famille d'El Houli</h6> */}
+              <form className="pt-3" onSubmit={loginForm} >
+                <div className="form-group">
                   <input type="email" name="nom" value={email} placeholder="Enter nom" 
                    onChange={(e) => setEmail(e.target.value)}
-                  class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username"/>
+                  className="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username"/>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input  type="password" name="nom" value={password} placeholder="Enter nom"
                    onChange={(e) => setPassword(e.target.value)}
                   className="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password"/>
                 </div>
-                <div class="mt-3">
-                  <button type='submit' class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" >Login</button>
+                <div className="mt-3">
+                  <button type='submit' className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" >Login</button>
                 </div>
-                <div class="my-2 d-flex justify-content-between align-items-center">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input"/>
-                      Keep me signed in
-                    </label>
-                  </div>
-                
-                </div>
+             
               
-                <div class="text-center mt-4 font-weight-light">
-                Vous n'avez pas un compte?  <Link to="/register" className="inscription"> S'inscrire</Link>
+                <div className="text-center mt-4 font-weight-light">
+                Vous n'avez pas un compte?  <Link to="/register" className="inscription text-primary" > S'inscrire</Link>
                 </div>
               </form>
             </div>
@@ -127,7 +132,7 @@ conserver plusieurs adresses, suivre les commandes et plus encore.</p>
     </div>
   
   </div>
-         </>}
+         </>
          <Footer/>
     </div>
    )

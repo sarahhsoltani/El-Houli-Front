@@ -1,8 +1,18 @@
-import React from 'react'
+import React ,{useEffect}from 'react'
 import Footer from '../footer/footer'
 import Header from '../header/header'
 import "./home.css"
+import { useDispatch, useSelector } from 'react-redux'
+import {Card,Button} from "react-bootstrap"
+import { getRecentPubs } from '../../redux/actions/produit'
  function Home() {
+    const product = useSelector((state) => state.productReducer.pubs)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getRecentPubs())
+           }, [dispatch])
+        console.log("products",product)
+        
     return (
         <div>
             <Header/>
@@ -130,12 +140,28 @@ import "./home.css"
                     </div>
                   {/*********** End  Section 5  **************************/}
                   {/*********** Start  Section 6  **************************/}
-                    <div>
+                    <div className="text-center">
                         <h1>Nos Nouveautés</h1>
                         <p> Découvrez nos tous derniers articles
                         Des bijoux & Accessoires <br/> originales avec des prix imbattables</p>
                     </div>
                             {/*********** Our Cards *************/}
+                        <div className="d-flex">
+                        {
+                              product.map((el,key)=>(
+                                <Card style={{ width: '18rem' }} key={key}>
+                                <Card.Img variant="top"  className="w-50 h-50"  src={el.image} />
+                                <Card.Body>
+                                  <Card.Title>{el.title}</Card.Title>
+                                  <Card.Text>
+                                    {el.price}
+                                  </Card.Text>
+                                  <Button variant="primary">Voir détails</Button>
+                                </Card.Body>
+                              </Card>
+                              ))
+                          }
+                        </div>
                   {/*********** End  Section 6  **************************/}
                 </div>
                    {/*********** Start  Section 7  **************************/}

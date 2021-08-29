@@ -1,10 +1,10 @@
 import React from 'react';
-import { useDispatch ,useSelector} from 'react-redux'
+import { useSelector} from 'react-redux'
 import { Alert } from 'reactstrap';
 
 
 const AlertMsg = () =>{
-    const dispatch = useDispatch()
+    
 
     const alerts = useSelector((state) => state.alertReducer)
     console.log("alert",alerts)

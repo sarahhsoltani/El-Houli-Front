@@ -13,6 +13,7 @@ const UsersAd=()=> {
         dispatch(getUsers())
            }, [dispatch])
         console.log("my data",users)
+       
     return (
         <div>
             <NavbarAd/>
