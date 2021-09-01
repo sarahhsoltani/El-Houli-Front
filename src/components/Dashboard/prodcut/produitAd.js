@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { getPubs } from '../../../redux/actions/produit'
 import NavbarAd from '../navbarAd/navbarAd'
 import SidebarAd from '../sideBar/sidebarAd'
-import AddProduit from './addProduit'
+import { useDispatch, useSelector } from 'react-redux'
+import { getUsers } from '../../../redux/actions/users'
+import { loadUser } from '../../../redux/actions/authentification'
 
 const ProductAd=()=> {
-    
+  const produits = useSelector((state) => state.productReducer.pubs)
+  const users = useSelector((state) => state.authReducer.user)
+  const dispatch = useDispatch()
+ console.log("notre produits",produits)
+ console.log(`users`, users)
+ useEffect(()=>{
+   dispatch(getPubs(),
+   loadUser(),
+   getUsers()
+   )
+   },[dispatch])
    
     
     return (
@@ -23,7 +36,7 @@ const ProductAd=()=> {
                   </div>
                   
                   <div className="table-responsive">
-                    <table className="table table-hover">
+                    {<table className="table table-hover">
                       <thead>
                         <tr>
                           <th>Titre</th>
@@ -32,22 +45,25 @@ const ProductAd=()=> {
                           <th>description</th>
                           <th>price</th>
                           <th>countInStock</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
-                     {/* {users.map((el,key)=>(
-                          <tbody>
+                      {produits.map((el,key)=>(
+                          <tbody key={key._id}>
                           <tr>
-                            <td>{el.name}</td>
-                            <td>{el.email}</td>
-                            <td className="text-danger"> {el.role}<i className="ti-arrow-down"></i></td>
-                            <td><label >{el.phone}</label></td>
+                            <td>{el.title}</td>
+                            <td><img src={el.image}/></td>
+                            <td > {el.category}<i className="ti-arrow-down"></i></td>
+                            <td><label >{el.description}</label></td>
+                            <td><label >{el.price}</label></td>
+                            <td><label >{el.countInStock}</label></td>
                             <td><label className="badge badge-danger">supprimer</label></td>
                           </tr>
                         
                          
                         </tbody>
-                     ))} */}
-                    </table>
+                     ))} 
+                    </table>}
                   </div>
                 </div>
               </div>

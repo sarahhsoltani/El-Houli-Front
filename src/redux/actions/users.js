@@ -16,11 +16,12 @@ export const getUsers = () => async dispatch => {
 
 export const deleteUser = id => async dispatch => {
   try {
-    await axios.delete(`/users/${id}`);
+    await axios.delete(`http://localhost:4000/api/users/deleteUser/${id}`);
     dispatch({
       type: DELETE_USER,
       payload: id
     });
+    console.log('delete user action')
     dispatch(getUsers);
   } catch (error) {
     console.log(error);

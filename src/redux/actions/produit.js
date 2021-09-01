@@ -88,7 +88,7 @@ export const updatePub = (
   countInStock
 ) => async dispatch => {
   try {
-    const res = await axios.put(`/publications/${id}`, {
+    const res = await axios.put(`http://localhost:4000/api/produits/moodifyProduct/${id}`, {
       title,
       category,
       description,
@@ -100,6 +100,7 @@ export const updatePub = (
       type: UPDATE_PRODUCT,
       payload: res.data
     });
+    console.log("update product")
   } catch (error) {
     console.log(error);
   }
@@ -107,12 +108,13 @@ export const updatePub = (
 
 export const deletePub = id => async dispatch => {
   try {
-    await axios.delete(`/publications/${id}`);
+    await axios.delete(`http://localhost:4000/api/produits/deleteProduit/${id}`);
     dispatch({
       type: DELETE_PRODUCT,
       payload: id
     });
     dispatch(getRecentPubs);
+    console.log("delete product")
   } catch (error) {
     console.log(error);
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import {logoutUser } from '../../../redux/actions/authentification'
 function NavbarAdmin() {
   const dispatch = useDispatch()
@@ -13,7 +13,7 @@ function NavbarAdmin() {
       <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <Link to="/dashboard/home" className="navbar-brand brand-logo mr-5" >
             <img src="/image/logBrand.png" className="mr-2" alt="logo"/></Link>
-        <a className="navbar-brand brand-logo-mini" >
+        <a className="navbar-brand brand-logo-mini" href="hh">
             <img src="/image/newLog.png"  alt="logo"/></a>
       </div>
       <div className="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -34,14 +34,14 @@ function NavbarAdmin() {
         </ul>
         <ul className="navbar-nav navbar-nav-right">
           <li className="nav-item dropdown">
-            <a className="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+            <a className="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="vvv" data-toggle="dropdown">
               
               <i className="fas fa-bell fa-1x"></i>
               <span className="count"></span>
             </a>
             <div className="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <p className="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-              <a className="dropdown-item preview-item">
+              <a href="hh" className="dropdown-item preview-item">
                 <div className="preview-thumbnail">
                   <div className="preview-icon bg-success">
                     <i className="ti-info-alt mx-0"></i>
@@ -49,7 +49,7 @@ function NavbarAdmin() {
                 </div>
                
               </a>
-              <a className="dropdown-item preview-item">
+              <a className="dropdown-item preview-item" href="hh">
                 <div className="preview-thumbnail">
                   <div className="preview-icon bg-warning">
                     <i className="ti-settings mx-0"></i>
@@ -66,15 +66,15 @@ function NavbarAdmin() {
             </div>
           </li>
           <li className="nav-item nav-profile dropdown">
-            <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+            <a className="nav-link dropdown-toggle" href="bb" data-toggle="dropdown" id="profileDropdown">
             <i className="fas fa-user "></i>
             </a>
             <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a className="dropdown-item">
+              <a className="dropdown-item" href="hh">
                 <i className="ti-settings text-primary"></i>
                 Settings
               </a>
-              <a className="dropdown-item" onClick={logout}>
+              <a className="dropdown-item" onClick={logout} href="hh">
                 <i className="ti-power-off text-primary"></i>
                 
                 Logout

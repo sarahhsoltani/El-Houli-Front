@@ -1,6 +1,6 @@
 // import React,{useEffect}from 'react'
- import { getPubs } from '../../redux/actions/produit'
-import AddProduit from '../Dashboard/prodcut/addProduit'
+ import { getPubs,deletePub } from '../../redux/actions/produit'
+import AddProduit from './addProduit'
 import Header from '../header/header'
 // import { useDispatch, useSelector } from 'react-redux'
 // import {Card,Button} from "react-bootstrap"
@@ -9,10 +9,10 @@ import Header from '../header/header'
 //     const user = useSelector((state) => state.authReducer.user)
 //     const pubs = useSelector((state) => state.productReducer.pubs)
        
-//     useEffect(() => {
-//           user && getPubs(user._id);
-//           console.log("one pub privé",pubs)
-//         })
+  // useEffect(() => {
+  //       user && getPubs(user._id);
+  //       console.log("one pub privé",pubs)
+  //     })
         
       
 //     return (
@@ -56,6 +56,7 @@ import {
   CardFooter,
   Button
 } from "reactstrap";
+import UpdateProduct from './updateProduct';
 
 
 class MyPublication extends Component {
@@ -106,16 +107,15 @@ class MyPublication extends Component {
                 </CardBody>
                 <CardFooter className="d-flex justify-content-between mt-1">
                   <Button color="light">
-                    <i
+                    {/* <i
                       className="fas fa-wrench fa-lg text-info"
-                      // onClick={() =>
-                      //   this.setState({ modal: true, isEdit: true, pub: pub })
-                      // }
-                    ></i>
+                      
+                    ></i> */}
+                    <UpdateProduct pub={pub} id={pub._id}/>
                   </Button>
                   <Button
                     color="light"
-                    // onClick={() => this.props.deletePub(pub._id)}
+                    onClick={() => this.props.deletePub(pub._id)}
                   >
                     <i className="fas fa-cut fa-lg text-danger"></i>
                   </Button>
@@ -145,6 +145,6 @@ export default connect(
   mapStateToProps,
   {
     getPubs
-   
+   ,deletePub
   }
 )(MyPublication);
