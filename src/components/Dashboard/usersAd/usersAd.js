@@ -3,34 +3,29 @@ import NavbarAd from '../navbarAd/navbarAd'
 import SidebarAd from '../sideBar/sidebarAd'
 import { useDispatch, useSelector } from 'react-redux'
 import {deleteUser, getUsers} from "../../../redux/actions/users"
-import SearchUser from './searchUser'
+
 //import { deleteUser } from '../../../redux/actions/users'
 const UsersAd=()=> {
-  const [Name, setName] = useState("")
-  const [Role, setRole] = useState("")
+
   
   const [search,setSearch]=useState("")
-  
+  const [role,setRole]=useState("")
+
+  const tab=["tous","Vendeur","Client"]
+
   const handleChange=(e)=>{
     setSearch(
-      e.target.value
+   e.target.value
     )
-    console.log(`e.target.value`, search)
+    console.log(`e.target.valueeee`, search)
   }
-
-    const searchByName = name => {
-      setName({ Name: name, Role: "" });
-      
-    };
-    // const handleChange=(e)=>{
-    //   setSearch(
-    //     e.target.value
-    //   )
-    // }
-    const searchByRole = role => {
-      setRole({ Role: role, Name: "" }); 
-    };
-  
+  const searchByRole = e => {
+    setRole({
+      ...role,
+      [e.target.name]: e.target.value
+    });
+    console.log(`role`, role)
+  };
     const users = useSelector((state) => state.userReducer.users)
     const dispatch = useDispatch()
    
@@ -42,7 +37,11 @@ const UsersAd=()=> {
       const deleteUsers=(id)=>{
         dispatch(deleteUser(id))
       }
+    const filterUsers=search? users.filter(el=>
+      el.name.toLowerCase().includes(search.toLowerCase())
     
+      
+      ):users
       
     return (
         <div>
@@ -57,7 +56,19 @@ const UsersAd=()=> {
                   
                   <div className="d-flex">
                   <h4 className="card-title">Listes Utilisateurs</h4>
-                
+                    <input className="ms-3" name="search" placeholder="search" onChange={handleChange} />
+                    
+                      <select name="role">
+                 {
+                   tab.map((el,key)=>(
+                      
+                        <option onClick={searchByRole}>{el}</option>
+                     
+                   ))
+                 }
+                    </select>
+                    
+              
                   </div>
                   <div className="table-responsive">
                     <table className="table table-hover">
@@ -85,12 +96,9 @@ const UsersAd=()=> {
               }) */}   
                       
                      {
-                  users.filter(el=>
-                    el.name.toLowerCase().includes(search.toLowerCase()
-                    )
-                    
-                    )
-              
+                  
+                 
+                      filterUsers
                      .map((el,key)=>(
                           <tbody key={key}>
                           <tr>

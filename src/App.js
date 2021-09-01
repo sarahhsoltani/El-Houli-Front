@@ -10,6 +10,7 @@ import Dashboard from './components/Dashboard/homeAdmin/dashboard';
 import UsersAd from './components/Dashboard/usersAd/usersAd';
 import ProductAd from "./components/Dashboard/prodcut/produitAd"
 import MyPublication from './components/myPublication/myPublication';
+import ProductUser from './components/collection/productUser';
 function App() {
   return (
     <BrowserRouter className="App">
@@ -24,6 +25,7 @@ function App() {
          <Route path="/dashboard/users" exact> <UsersAd/></Route>
          <Route path="/dashboard/products" exact> <ProductAd/></Route>
         <Route path="/MyPublication" exact><MyPublication/></Route>
+        <Route path="/produitId/:id"><ProductUser/></Route>
       </Switch>
     </BrowserRouter>
   );

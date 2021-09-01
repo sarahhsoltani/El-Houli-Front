@@ -6,6 +6,7 @@ import {Form} from "react-bootstrap"
 import {Card,Button} from "react-bootstrap"
 import Footer from '../footer/footer'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 const Collection = () => {
   const dispatch = useDispatch()
   const pubs = useSelector((state) => state.productReducer.pubs)
@@ -66,7 +67,7 @@ const Collection = () => {
                                     <p>{el.description}</p>
                                     <p>{el.category}</p>
                                   </Card.Text>
-                                  <Button variant="primary">Consulter</Button>
+                                 <Link to={`/produitId/${el._id}`} id={el._id}><Button variant="primary">Consulter</Button></Link> 
                                 </Card.Body>
                               </Card>
                               ))

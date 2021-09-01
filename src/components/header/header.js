@@ -10,10 +10,10 @@ function Header() {
     const user = useSelector((state) => state.authReducer.user) 
     console.log("home user",user)
     const dispatch = useDispatch()
-    const logout =()=>{
+    const logout =()=>{ 
         dispatch (logoutUser())
     }
-      
+       
     return (
       <div>
            {/* *********** Strat Section 1  *********/}

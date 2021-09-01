@@ -8,10 +8,12 @@ import { loadUser } from '../../../redux/actions/authentification'
 
 const ProductAd=()=> {
   const produits = useSelector((state) => state.productReducer.pubs)
-  const users = useSelector((state) => state.authReducer.user)
+  const user = useSelector((state) => state.authReducer.user)
+  const users = useSelector((state) => state.userReducer.users)
   const dispatch = useDispatch()
  console.log("notre produits",produits)
  console.log(`users`, users)
+ console.log(`user`, user)
  useEffect(()=>{
    dispatch(getPubs(),
    loadUser(),
@@ -19,7 +21,9 @@ const ProductAd=()=> {
    )
    },[dispatch])
    
-    
+    const deleteProduit =(id)=>{
+      dispatch(deleteProduit(id))
+    }
     return (
         <div>
            <NavbarAd/>
@@ -40,6 +44,7 @@ const ProductAd=()=> {
                       <thead>
                         <tr>
                           <th>Titre</th>
+                          <th>Publier par</th>
                           <th>image</th>
                           <th>categories</th>
                           <th>description</th>
@@ -52,6 +57,7 @@ const ProductAd=()=> {
                           <tbody key={key._id}>
                           <tr>
                             <td>{el.title}</td>
+                            <td>{el.user.name}</td>
                             <td><img src={el.image}/></td>
                             <td > {el.category}<i className="ti-arrow-down"></i></td>
                             <td><label >{el.description}</label></td>

@@ -3,7 +3,7 @@ import {
     DELETE_PRODUCT,
     GET_PRODUCTS,
     UPDATE_PRODUCT,
-  
+    GET_PRODUCT
   } from "../actions/type";
   
   const initialState = {
@@ -21,12 +21,14 @@ import {
           pubs: payload,
           loading: false
         };
-    //   case GET_PUB:
-    //     return {
-    //       ...state,
-    //       pub: payload,
-    //       loading: false
-    //     };
+      case GET_PRODUCT:
+        return {
+          ...state,
+          pub: payload,
+          loading: false
+          
+        };
+       
       case ADD_PRODUCT:
         return {
           ...state,

@@ -37,7 +37,7 @@ export const getRecentPubs = () => async dispatch => {
     console.log(error);
   }
 };
-
+//get product by id
 export const getPub = id => async dispatch => {
   try {
     const res = await axios.get(`http://localhost:4000/api/produits/getProduitById/${id}`);
@@ -45,6 +45,7 @@ export const getPub = id => async dispatch => {
       type: GET_PRODUCT,
       payload: res.data
     });
+    console.log(`res.data`, res.data)
     console.log("getPub")
   } catch (error) {
     console.log(error);

@@ -24,6 +24,7 @@ export const register = (
       type: REGISTER_SUCCESS,
       payload: res.data
     });
+    dispatch(loadUser());
     console.log("register")
   } catch (err) {
     const error = err.response.data.msg;
