@@ -20,12 +20,12 @@ const UsersAd=()=> {
     console.log(`e.target.valueeee`, search)
   }
   const searchByRole = e => {
-    setRole({
-      ...role,
-      [e.target.name]: e.target.value
-    });
-    console.log(`role`, role)
+    setRole(
+    
+     e.target.value
+    );   
   };
+  console.log(`role`, role)
     const users = useSelector((state) => state.userReducer.users)
     const dispatch = useDispatch()
    
@@ -37,11 +37,24 @@ const UsersAd=()=> {
       const deleteUsers=(id)=>{
         dispatch(deleteUser(id))
       }
-    const filterUsers=search? users.filter(el=>
+    const filterUsers=
+     search  && users.filter(el=>
       el.name.toLowerCase().includes(search.toLowerCase())
-    
       
-      ):users
+      
+      ) 
+      
+      const filterByRole=
+     role  && users.filter(el=>role === "tous"? el :
+      el.role.toLowerCase().includes(role.toLowerCase())
+    
+      )
+      // const usersFiltred = 
+      // filterUsers && filterByRole ? filterUsers.concat(filterByRole)
+      // :users 
+      const usersFiltred = 
+      filterUsers ? filterUsers : filterByRole? filterByRole
+      :users 
       
     return (
         <div>
@@ -58,11 +71,11 @@ const UsersAd=()=> {
                   <h4 className="card-title">Listes Utilisateurs</h4>
                     <input className="ms-3" name="search" placeholder="search" onChange={handleChange} />
                     
-                      <select name="role">
+                      <select value={role} onChange={searchByRole}>
                  {
                    tab.map((el,key)=>(
                       
-                        <option onClick={searchByRole}>{el}</option>
+                        <option >{el}</option>
                      
                    ))
                  }
@@ -98,7 +111,7 @@ const UsersAd=()=> {
                      {
                   
                  
-                      filterUsers
+                  usersFiltred
                      .map((el,key)=>(
                           <tbody key={key}>
                           <tr>

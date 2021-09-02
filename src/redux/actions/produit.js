@@ -121,22 +121,26 @@ export const deletePub = id => async dispatch => {
   }
 };
 
+// add comment
+
 export const addComment = (id, text) => async dispatch => {
   try {
-    await axios.post(`/publications/comment/${id}`, { text });
+    await axios.post(`http://localhost:4000/api/comments/postComment/${id}`, { text });
 
     dispatch(getPub(id));
+    console.log(`add comment`)
   } catch (error) {
-    console.log(error);
+    console.log(error); 
   }
 };
-
+//delete comment
 export const deleteComment = (id, comment_id) => async dispatch => {
   try {
-    await axios.delete(`/publications/comment/${id}/${comment_id}`);
+    await axios.delete(`http://localhost:4000/api/comments/deleteComment/${id}/${comment_id}`);
 
-    dispatch(getPub(id));
+    dispatch(getPub(id)); 
+    console.log("delete comment")
   } catch (error) {
-    console.log(error);
+    console.log(error);  
   }
 };
