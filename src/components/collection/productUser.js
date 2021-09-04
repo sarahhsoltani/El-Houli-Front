@@ -1,15 +1,18 @@
 import React,{useEffect,useState} from 'react'
  import { addComment, getPub,deleteComment } from '../../redux/actions/produit'
 import Header from '../header/header'
-import { useParams } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux'
+
 import {
     Row,
     Col,
-    ListGroup,
     ListGroupItemHeading,
   ListGroupItem,
   ListGroupItemText,
+  ListGroup,
+  Form,
   Input,
   Button
 } from "reactstrap";
@@ -21,6 +24,7 @@ import Moment from "react-moment";
     const loading = useSelector((state) => state.productReducer.loading)
     const isAuthenticated = useSelector((state) => state.authReducer.isAuthenticated)
     const user = useSelector((state) => state.authReducer.user)
+    const [qty, setQty] = useState(1)
     console.log(`user`, user)
     const [comment, setComment] = useState("")
     const { id } = useParams()
@@ -28,7 +32,7 @@ import Moment from "react-moment";
      useEffect(() => {
         dispatch(getPub(id))  
      }, [dispatch])
-    console.log(`pub`, pub)
+    console.log(`puuuuuub`, pub)
 
    const changeHandler = e => {
       setComment(
@@ -37,8 +41,20 @@ import Moment from "react-moment";
       console.log(`event.target.value`, e.target.value)
     }; 
 
+    let history = useHistory();
+
+    const redirect = () => {
+      history.push(`/card/${pub?._id}?qty=${qty}`)
+    }
    
-   
+   const passToCard =()=>{
+    <Redirect
+     to={{
+     pathname: "/card/:id",
+     state: { pub: pub}
+   }}
+ />
+   }
     return ( 
        <div> 
         <Header/>
@@ -75,7 +91,41 @@ import Moment from "react-moment";
                 </p>
               </Col>
             </div>
+            <p>{pub?.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}</p>
+            {pub?.countInStock > 0 && (
+                  <select value={qty}
+                   onChange={(e) => setQty(e.target.value)}>
+                     {/* {[...Array(pub?.countInStock).keys()].map(
+                                (x) => ( */}
+                                  <option >
+                                   1
+                                  </option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                {/* )
+                              )} */}
+                  </select>
 
+            )}
+                  {/* <Row>
+                          <Col>Qty</Col>
+                          <Col>
+                            <Form.Control
+                              as="select"
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                            >
+                              {[...Array(product.countInStock).keys()].map(
+                                (x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                    {x + 1}
+                                  </option>
+                                )
+                              )}
+                            </Form.Control>
+                          </Col>
+                        </Row> */}
             {isAuthenticated && (
               <div className="m-2 p-3 ">
                 <p>
@@ -96,8 +146,17 @@ import Moment from "react-moment";
                   </span>
                   {pub?.user.phone}
                 </p>
+            <button onClick={<Redirect to={{pathname: `/cart/${pub._id}`,state: { pub: pub} }}/>} >
+              ajouter au panier
+              </button>
+                {/* <Link to={`/card/${pub?._id}?qty=${qty}`} > <button className="btn btn-primary" onClick={} >Ajouter au panier</button></Link> */}
+
+              {console.log(`pubbbbbbb`, pub)}
               </div>
+              
             )}
+            
+            
           </Col> 
         </Row>
         <ListGroupItem>
@@ -146,7 +205,9 @@ import Moment from "react-moment";
                     {comment.date} 
                  </Moment>
                 </ListGroupItemText>
+                
               </ListGroupItem>
+              
             ))}
             <div>
             {isAuthenticated &&

@@ -11,6 +11,7 @@ import UsersAd from './components/Dashboard/usersAd/usersAd';
 import ProductAd from "./components/Dashboard/prodcut/produitAd"
 import MyPublication from './components/myPublication/myPublication';
 import ProductUser from './components/collection/productUser';
+import CardOrder from './components/card/card';
 function App() {
   return (
     <BrowserRouter className="App">
@@ -26,6 +27,8 @@ function App() {
          <Route path="/dashboard/products" exact> <ProductAd/></Route>
         <Route path="/MyPublication" exact><MyPublication/></Route>
         <Route path="/produitId/:id"><ProductUser/></Route>
+        {/* <Route><CardOrder exact path="/card/:id?:qty"/></Route> */}
+        <Route exact path="/card/:id" render={(props) => <CardOrder {...props}/>}/>
       </Switch>
     </BrowserRouter>
   );
