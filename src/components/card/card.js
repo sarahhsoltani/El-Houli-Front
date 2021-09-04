@@ -2,28 +2,37 @@ import React ,{useEffect}from 'react'
 import Header from '../header/header'
 import { useParams } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
-import {  getPub } from '../../redux/actions/produit'
+import {  getOrderById } from '../../redux/actions/cart'
     
- function CardOrder({props}) {
+ function CardOrder(props) {
     const dispatch = useDispatch()   
     // const { id } = useParams()
-   
+    const card = useSelector((state) => state.addToCards.card)
+    const isloading = useSelector((state) => state.addToCards.isloading)
     
     useEffect(() => {
-        console.log(props.location.state.pub )
-     }, [])
-     
+        dispatch(getOrderById(props.match.params.id)) 
+     }, [dispatch])
+
+     console.log('card', !isloading?card:[])
+  
+
     return (
 
         <div>
              <Header/>
              <h1>add to card </h1>
-             
-             {/* {
-                 pub.map((el.key)=>(
-
-                 ))
-             } */}
+             { !isloading ?
+             <div>   
+                 <h1>{card.title}</h1>
+                 <h1>{card.price}</h1>
+                 <h1>{card.image}</h1>
+                 <h1>{card.qty}</h1>
+                </div>:
+                ""
+                  
+                }
+            
         </div>
     )
 }

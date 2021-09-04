@@ -13,7 +13,7 @@ const Collection = () => {
   useEffect(() => {
     dispatch(getPubs())
        }, [dispatch])
-    console.log("pubs",pubs)
+    // console.log("pubs",pubs)
   return(
     <div>
         <Header/> 

@@ -1,8 +1,10 @@
 import {
-    CART_ADD_PRODUCT
+    CART_ADD_PRODUCT,GET_ORDER_BY_ID
   } from "../actions/type";
    const initialState = {
    cards: [],  
+   isloading:true,
+   card:{}
   };
 
   const addToCards= (state = initialState, action) => {
@@ -10,9 +12,16 @@ import {
     switch (type) {   
     case CART_ADD_PRODUCT:
         return {
-          ...state,
-          cards: [...state.cards, payload]
+           ...state,
+        cards: payload
         };
+        case GET_ORDER_BY_ID:
+          return {
+            ...state,
+            card: payload,
+            isloading: false
+            
+          };
        default:
         return state;
     }

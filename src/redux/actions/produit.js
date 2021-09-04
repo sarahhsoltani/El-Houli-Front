@@ -45,8 +45,8 @@ export const getPub = id => async dispatch => {
       type: GET_PRODUCT,
       payload: res.data
     });
-    console.log(`res.data`, res.data)
-    console.log("getPub")
+    // console.log(`res.data`, res.data)
+    // console.log("getPub")
   } catch (error) {
     console.log(error);
   }

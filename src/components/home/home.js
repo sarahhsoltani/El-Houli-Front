@@ -11,7 +11,7 @@ import { getRecentPubs } from '../../redux/actions/produit'
     useEffect(() => {
         dispatch(getRecentPubs())
            }, [dispatch])
-        console.log("products",product)
+        // console.log("products",product)
         
     return (
         <div>

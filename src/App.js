@@ -28,7 +28,7 @@ function App() {
         <Route path="/MyPublication" exact><MyPublication/></Route>
         <Route path="/produitId/:id"><ProductUser/></Route>
         {/* <Route><CardOrder exact path="/card/:id?:qty"/></Route> */}
-        <Route exact path="/card/:id" render={(props) => <CardOrder {...props}/>}/>
+        <Route exact path="/card/:id/:qty" render={(props) => <CardOrder {...props}/>}/>
       </Switch>
     </BrowserRouter>
   );

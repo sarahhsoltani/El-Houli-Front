@@ -18,6 +18,7 @@ import {
 } from "reactstrap";
 import {Link} from "react-router-dom"
 import Moment from "react-moment";
+import { addToCard } from '../../redux/actions/cart';
  function ProductUser() {
     const dispatch = useDispatch()     
     const pub = useSelector((state) => state.productReducer.pub)
@@ -25,36 +26,41 @@ import Moment from "react-moment";
     const isAuthenticated = useSelector((state) => state.authReducer.isAuthenticated)
     const user = useSelector((state) => state.authReducer.user)
     const [qty, setQty] = useState(1)
-    console.log(`user`, user)
+    // console.log(`user`, user)
     const [comment, setComment] = useState("")
+    const [orderToCard, setOrderToCard] = useState([])
+
     const { id } = useParams()
 
      useEffect(() => {
         dispatch(getPub(id))  
      }, [dispatch])
-    console.log(`puuuuuub`, pub)
+    //  console.log(`pub by id`, pub)
 
    const changeHandler = e => {
       setComment(
         e.target.value
       );
-      console.log(`event.target.value`, e.target.value)
+      // console.log(`event.target.value`, e.target.value)
     }; 
 
-    let history = useHistory();
-
-    const redirect = () => {
-      history.push(`/card/${pub?._id}?qty=${qty}`)
+    const passToCard=(id,title,qty,image,price)=>{
+      dispatch(addToCard(id,title,qty,image,price))
     }
+    // let history = useHistory();
+
+    // const redirect = () => {
+    //   history.push(`/card/${pub?._id}?qty=${qty}`)
+    // }
    
-   const passToCard =()=>{
-    <Redirect
-     to={{
-     pathname: "/card/:id",
-     state: { pub: pub}
-   }}
- />
-   }
+//    const passToCard =()=>{
+//     <Redirect
+//      to={{
+//      pathname: "/card/:id",
+//      state: { pub: pub}
+//    }}
+//  />
+   //}
     return ( 
        <div> 
         <Header/>
@@ -146,12 +152,14 @@ import Moment from "react-moment";
                   </span>
                   {pub?.user.phone}
                 </p>
-            <button onClick={<Redirect to={{pathname: `/cart/${pub._id}`,state: { pub: pub} }}/>} >
+            {/* <button onClick={<Redirect to={{pathname: `/cart/${pub._id}`,state: { pub: pub} }}/>} >
               ajouter au panier
-              </button>
-                {/* <Link to={`/card/${pub?._id}?qty=${qty}`} > <button className="btn btn-primary" onClick={} >Ajouter au panier</button></Link> */}
-
-              {console.log(`pubbbbbbb`, pub)}
+              // </button> */} 
+                <Link to={`/card/${pub?._id}/qty=${qty}`} > 
+              <button className="btn btn-primary" 
+                 onClick={passToCard(pub?._id,pub?.title,qty,pub?.image,pub?.price)} >
+                   Ajouter au panier</button>  
+              </Link>
               </div>
               
             )}
