@@ -1,7 +1,7 @@
 import React from 'react'
 import './header.css'
 import { useDispatch, useSelector } from 'react-redux'
-import {Form, FormControl,Nav} from 'react-bootstrap'
+import {Form, FormControl,Nav , InputGroup} from 'react-bootstrap'
 import {Link} from "react-router-dom"
 import {logoutUser } from '../../redux/actions/authentification'
 
@@ -43,13 +43,18 @@ function Header() {
              <span className="navbar-toggler-icon"></span>
             </button>
               <Form inline className="d-flex   formm">
-                <FormControl  className="input-search" type="text" placeholder="Type movie or tv show name to find it"  />
-                <button className="btnn search btn-red"> <i className="fas fa-search"></i></button>
+              <InputGroup className="mb-2">
+       
+        <FormControl id="inlineFormInputGroup" placeholder="Username" />
+        <InputGroup.Text><i className="fas fa-search"></i></InputGroup.Text>
+      </InputGroup>
+                {/* <FormControl  className="input-search" type="text" placeholder="Type movie or tv show name to find it"  />
+                <button className="btnn search btn-red"> <i className="fas fa-search"></i></button> */}
               </Form>
            <div className="collapse navbar-collapse" id="navbarSupportedContent">    
               <ul className="navbar-nav  mb-2 mb-lg-0">
                   <li className="nav-item ">
-                     <Link to="/" className="nav-link active" aria-current="page" >Boutique</Link>
+                     <Link to="/" className="nav-link " aria-current="page" >Boutique</Link>
                   </li>
                   <li className="nav-item ">  
                       <Link to="/propos" className="nav-link" >À propos</Link>
@@ -70,20 +75,21 @@ function Header() {
                 <li className="nav-item ">
                          
                 <Link to="/login">  
-                 <li className="nav-linkk">se Connecter</li>
+                 <button
+                  className=" btn connexion">se Connecter</button>
                  </Link> 
              </li>):(
               <div>  
                    {user.role === "Vendeur" && (
-            <li className="level-box mt-2 nav-item nav-linkk d-flex ">
-            <Link className="nav-item" to="/MyPublication">Mes publications</Link>
-             <button className="btn btn-primary btn-dec ms-3"><i className="fas fa-user-circle lev" onClick={logout}></i> déconnecter</button>
+            <li className="level-box  nav-item  d-flex ">
+            <Link className="nav-item nav-link" to="/MyPublication">Mes publications</Link>
+             <button className="btn connexion ms-3"><i className="fas fa-user-circle lev" onClick={logout}></i> déconnecter</button>
   
             </li>)}
                {user.role === "Client" && (
             <li className="level-box mt-2 nav-item nav-linkk d-flex ">
             
-             <button className="btn btn-primary btn-dec ms-3"><i className="fas fa-user-circle lev" onClick={logout}></i> déconnecter</button>
+             <button className="btn connexion ms-3"><i className="fas fa-user-circle lev" onClick={logout}></i> déconnecter</button>
   
             </li>)}
                 </div>  

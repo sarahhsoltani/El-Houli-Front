@@ -4,17 +4,30 @@ import {
    const initialState = {
    cards: [],  
    isloading:true,
-   card:{}
+   card:[]
   };
 
   const addToCards= (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {   
     case CART_ADD_PRODUCT:
+      const item = action.payload
+
+      const existItem = state.cards.find((x) => x.product === item.product)
+
+      if (existItem) {
         return {
-           ...state,
-        cards: payload
-        };
+          ...state,
+          cards: state.cards.map((x) =>
+            x.product === existItem.product ? item : x
+          ),
+        }
+      } else {
+        return {
+          ...state,
+          cards: [...state.cards, item],
+        } 
+      }
         case GET_ORDER_BY_ID:
           return {
             ...state,

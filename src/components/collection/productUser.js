@@ -71,8 +71,7 @@ import { addToCard } from '../../redux/actions/cart';
           <Col className="d-flex align-items-center">
             <img
               src={pub?.image}
-              width="100%"
-              height="100%" 
+             
               alt="..."
             />
           </Col>
@@ -152,6 +151,7 @@ import { addToCard } from '../../redux/actions/cart';
                   </span>
                   {pub?.user.phone}
                 </p>
+                
             {/* <button onClick={<Redirect to={{pathname: `/cart/${pub._id}`,state: { pub: pub} }}/>} >
               ajouter au panier
               // </button> */} 

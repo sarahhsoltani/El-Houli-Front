@@ -1,10 +1,23 @@
-.fond{
-    background-image: url("../../images/3.jpg");
+/* .fond{
+    background-image: url("../../images/chacheya-produit.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 108vh;
+    height: 88vh;
     margin-top: -15px;
     
+} */
+.font{
+    width: 500px;
+    height: 500px;
+    transition: none 0s ease 0s;
+    text-align: left;
+    line-height: 0px;
+    border-width: 0px;
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 0px;
+    font-weight: 400;
+    font-size: 14px;
 }
 .title-one{
     font-size: 53px;

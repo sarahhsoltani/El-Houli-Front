@@ -37,8 +37,8 @@ import { getRecentPubs } from '../../redux/actions/produit'
                 </div> */}
                 <div className="col-md-12">
                     <div className='row'>
-                        <div className="col-md-5">
-                        <div className=" text-left">
+                        <div className="col-md-8   col-6">
+                        <div className="container" >
                          <h1 className="title-one">Des bijous pour tous les couts fascinaux,originals</h1>
                          <ul className="pt-3 list">
                             <li><p>Artisanat 100% tunisien</p></li>
@@ -49,8 +49,8 @@ import { getRecentPubs } from '../../redux/actions/produit'
                          <button className="btn btn-houli mt-3">Profiter & découvrir</button>
                       </div>
                         </div>
-                        <div className="col-md-7 fond">
-                            
+                        <div className="col-md-4 col-6  ">
+                            <img src="/image/chacheya-produit.jpg"/>
                         </div>
                     </div>
                 </div>

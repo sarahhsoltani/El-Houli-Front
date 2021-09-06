@@ -10974,7 +10974,29 @@
     background-color: #ae8e7f;
     border-color: #ae8e7f
   }
-  
+  .btn-houli{
+    color: white;
+    letter-spacing: 1px;
+    background: #005282;
+}
+.connexion{
+  color: white;
+  letter-spacing: 1px;
+  background: #005282;
+  padding: 5px 16px;
+    font-size: 12px;
+    margin-top: 8px;
+}
+.connexion:hover{
+  color: white;
+  letter-spacing: 1px;
+  background: #005282;
+}
+.btn-houli:hover{
+  color: white;
+  letter-spacing: 1px;
+  background: #005282;
+}
   .btn-primary:hover, .wizard > .actions a:hover {
     color: #fff;
     background-color: #ae8e7f;
@@ -13575,7 +13597,9 @@
   }
   
   .navbar-light .navbar-nav .nav-link {
-    color: rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+    font-weight: 700;
+    color: #000000;
   }
   
   .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
@@ -30425,3 +30449,17 @@
   
   /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
   
+  #input-search-nav{
+    border-bottom: 1px solid red !important;
+    border: none !important;
+    border-bottom-left-radius: unset !important;
+  }
+
+  .search-nav-hom {
+    font-size: 1rem !important;
+    color: #af8f80 !important;
+    background-color: #e9ecef00 !important;
+    border: none !important;
+    border-bottom: 1px solid #af8f80 !important;
+    border-radius: unset !important;
+  }
